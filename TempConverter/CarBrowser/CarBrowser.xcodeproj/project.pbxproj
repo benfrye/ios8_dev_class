@@ -12,10 +12,11 @@
 		175E0B881ADD7F8900E64758 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0B871ADD7F8900E64758 /* MasterViewController.m */; };
 		175E0B8B1ADD7F8900E64758 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0B8A1ADD7F8900E64758 /* DetailViewController.m */; };
 		175E0B8E1ADD7F8900E64758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 175E0B8C1ADD7F8900E64758 /* Main.storyboard */; };
-		175E0B901ADD7F8900E64758 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175E0B8F1ADD7F8900E64758 /* Images.xcassets */; };
 		175E0B931ADD7F8900E64758 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175E0B911ADD7F8900E64758 /* LaunchScreen.xib */; };
 		175E0B9F1ADD7F8900E64758 /* CarBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0B9E1ADD7F8900E64758 /* CarBrowserTests.m */; };
 		175E0BAA1ADD812400E64758 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0BA91ADD812400E64758 /* Car.m */; };
+		175E0BB41ADD8A8B00E64758 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 175E0BB31ADD8A8B00E64758 /* Images.xcassets */; };
+		175E0BB91ADD8B1500E64758 /* CarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0BB81ADD8B1500E64758 /* CarTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +40,15 @@
 		175E0B891ADD7F8900E64758 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		175E0B8A1ADD7F8900E64758 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		175E0B8D1ADD7F8900E64758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		175E0B8F1ADD7F8900E64758 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		175E0B921ADD7F8900E64758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		175E0B981ADD7F8900E64758 /* CarBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		175E0B9D1ADD7F8900E64758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		175E0B9E1ADD7F8900E64758 /* CarBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarBrowserTests.m; sourceTree = "<group>"; };
 		175E0BA81ADD812400E64758 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		175E0BA91ADD812400E64758 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		175E0BB31ADD8A8B00E64758 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		175E0BB71ADD8B1500E64758 /* CarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTableViewCell.h; sourceTree = "<group>"; };
+		175E0BB81ADD8B1500E64758 /* CarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,11 +97,13 @@
 				175E0B891ADD7F8900E64758 /* DetailViewController.h */,
 				175E0B8A1ADD7F8900E64758 /* DetailViewController.m */,
 				175E0B8C1ADD7F8900E64758 /* Main.storyboard */,
-				175E0B8F1ADD7F8900E64758 /* Images.xcassets */,
+				175E0BB31ADD8A8B00E64758 /* Images.xcassets */,
 				175E0B911ADD7F8900E64758 /* LaunchScreen.xib */,
 				175E0B7F1ADD7F8900E64758 /* Supporting Files */,
 				175E0BA81ADD812400E64758 /* Car.h */,
 				175E0BA91ADD812400E64758 /* Car.m */,
+				175E0BB71ADD8B1500E64758 /* CarTableViewCell.h */,
+				175E0BB81ADD8B1500E64758 /* CarTableViewCell.m */,
 			);
 			path = CarBrowser;
 			sourceTree = "<group>";
@@ -210,8 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				175E0B8E1ADD7F8900E64758 /* Main.storyboard in Resources */,
+				175E0BB41ADD8A8B00E64758 /* Images.xcassets in Resources */,
 				175E0B931ADD7F8900E64758 /* LaunchScreen.xib in Resources */,
-				175E0B901ADD7F8900E64758 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +238,7 @@
 				175E0B851ADD7F8900E64758 /* AppDelegate.m in Sources */,
 				175E0B881ADD7F8900E64758 /* MasterViewController.m in Sources */,
 				175E0B821ADD7F8900E64758 /* main.m in Sources */,
+				175E0BB91ADD8B1500E64758 /* CarTableViewCell.m in Sources */,
 				175E0B8B1ADD7F8900E64758 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

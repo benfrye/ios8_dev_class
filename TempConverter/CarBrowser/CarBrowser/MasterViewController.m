@@ -9,10 +9,12 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "Car.h"
+#import "CarTableViewCell.h"
 
 @interface MasterViewController ()
 
-@property NSMutableArray *objects;
+@property NSArray *carSectionTitles;
+@property NSDictionary *cars;
 @end
 
 @implementation MasterViewController
@@ -24,22 +26,18 @@
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
     }
     
-    self.objects = [NSMutableArray arrayWithArray:@[
-                                                    [Car carWithMake:@"Chevy" model:@"Volt" image:nil],
-                                                    [Car carWithMake:@"BMW" model:@"Mini" image:nil],
-                                                    [Car carWithMake:@"Toyota" model:@"Venza" image:nil],
-                                                    [Car carWithMake:@"Volvo" model:@"S60" image:nil],
-                                                    [Car carWithMake:@"Smart" model:@"Fortwo" image:nil]
-                                                    ]];
+    self.cars = @{@"First Set": @[[Car carWithMake:@"Chevy" model:@"Volt" image: [UIImage imageNamed:@"ChevyVolt"]],
+                                  [Car carWithMake:@"BMW" model:@"Mini" image: [UIImage imageNamed:@"MiniClubman"]],
+                                  [Car carWithMake:@"Toyota" model:@"Venza" image: [UIImage imageNamed:@"ToyotaVenza"]]],
+                  @"Second Set": @[[Car carWithMake:@"Volvo" model:@"S60" image: [UIImage imageNamed:@"VolvoS60"]],
+                                   [Car carWithMake:@"Smart" model:@"Fortwo" image: [UIImage imageNamed:@"SmartFortwo"]]]};
+    self.carSectionTitles = [[self.cars allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -48,21 +46,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        NSString *sectionTitle = [self.carSectionTitles objectAtIndex:indexPath.section];
+        NSArray *sectionCars = [self.cars objectForKey:sectionTitle];
+        NSDate *object = [sectionCars objectAtIndex:indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -73,19 +64,34 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.carSectionTitles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    NSString *sectionTitle = [self.carSectionTitles objectAtIndex:section];
+    NSArray *sectionAnimals = [self.cars objectForKey:sectionTitle];
+    return [sectionAnimals count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    Car *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object make];
+    CarTableViewCell *cell = [tableView
+                              dequeueReusableCellWithIdentifier:@"Cell"
+                              forIndexPath:indexPath];
+    
+    // Configure the cell...
+    NSString *sectionTitle = [self.carSectionTitles objectAtIndex:indexPath.section];
+    NSArray *sectionCars = [self.cars objectForKey:sectionTitle];
+    Car *car = [sectionCars objectAtIndex:indexPath.row];
+    cell.makeLabel.text = car.make;
+    cell.modelLabel.text = car.model;
+    cell.carImageView.image = car.image;
+    
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.carSectionTitles objectAtIndex:section];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,7 +101,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        NSString *sectionTitle = [self.carSectionTitles objectAtIndex:indexPath.section];
+        [[self.cars objectForKey:sectionTitle] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
