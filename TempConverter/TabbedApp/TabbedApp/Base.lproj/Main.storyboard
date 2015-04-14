@@ -125,25 +125,6 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="767"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="pYy-FU-9wK">
-            <objects>
-                <viewController id="pvu-QR-CS7" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3hg-lg-eYr"/>
-                        <viewControllerLayoutGuide type="bottom" id="aar-jo-hNd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CDS-Wt-3sd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="car-HY-vsr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x13-fP-kIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1562" y="1017"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>

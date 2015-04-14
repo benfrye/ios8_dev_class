@@ -29,9 +29,15 @@
     bool state = [sender isOn];
     
     if (state)
+    {
         [_onOffLabel setText:@"On"];
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
     else
+    {
         [_onOffLabel setText:@"Off"];
+        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:.9 alpha:1];
+    }
 }
 
 /*
