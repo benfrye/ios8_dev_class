@@ -25,10 +25,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)buttonPressed:(id)sender {
+     NSString *text = [[self textField] text];
+    
+    if ([text isEqual:@"one"])
+        [self performSegueWithIdentifier:@"segueOne" sender:self];
+    else if ([text isEqual:@"two"])
+        [self performSegueWithIdentifier:@"segueTwo" sender:self];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqual:@"mySegue"])
+    if ([segue.identifier isEqual:@"segueOne"])
     {
         SecondViewController *svc = (SecondViewController *)[segue destinationViewController];
         

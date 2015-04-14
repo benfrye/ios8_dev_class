@@ -88,12 +88,12 @@
 				175E0B141ADD334C00E64758 /* AppDelegate.m */,
 				175E0B161ADD334C00E64758 /* ViewController.h */,
 				175E0B171ADD334C00E64758 /* ViewController.m */,
+				175E0B351ADD349100E64758 /* SecondViewController.h */,
+				175E0B361ADD349100E64758 /* SecondViewController.m */,
 				175E0B191ADD334C00E64758 /* Main.storyboard */,
 				175E0B1C1ADD334C00E64758 /* Images.xcassets */,
 				175E0B1E1ADD334C00E64758 /* LaunchScreen.xib */,
 				175E0B0F1ADD334C00E64758 /* Supporting Files */,
-				175E0B351ADD349100E64758 /* SecondViewController.h */,
-				175E0B361ADD349100E64758 /* SecondViewController.m */,
 			);
 			path = StoryboardApp;
 			sourceTree = "<group>";
