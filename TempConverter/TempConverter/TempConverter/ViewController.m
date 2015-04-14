@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property MyConverter *converter;
+
 @end
 
 @implementation ViewController
@@ -18,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _converter = [[MyConverter alloc] init];
+    _converter.temperatureScale = F;
+    _converter.temperature = 32.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,14 +30,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)convertAction:(id)sender {
-    float temp = [[[self tempField] text] floatValue];
+- (IBAction)farenheitEditted:(id)sender {
+    float farenheitTemp = [[[self farenheitField] text] floatValue];
+    float convertedTemp;
     
-    MyConverter *converter = [[MyConverter alloc] init];
-    converter.temperatureScale = F;
-    converter.temperature = temp;
-    float result = [converter convert:temp];
+    _converter.temperatureScale = F;
+    _converter.temperature = farenheitTemp;
+    convertedTemp = [_converter convert:C];
+    [[self celciusField] setText:[NSString stringWithFormat:@"%f", convertedTemp]];
     
-    [[self resultLabel] setText:[NSString stringWithFormat:@"%f", result]];
+    convertedTemp = [_converter convert:K];
+    [[self kelvinField] setText:[NSString stringWithFormat:@"%f", convertedTemp]];
+}
+
+- (IBAction)celciusEditted:(id)sender {
+}
+
+- (IBAction)kelvinEditted:(id)sender {
 }
 @end

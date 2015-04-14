@@ -10,10 +10,13 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
-@property (weak, nonatomic) IBOutlet UITextField *tempField;
+@property (weak, nonatomic) IBOutlet UITextField *farenheitField;
+@property (weak, nonatomic) IBOutlet UITextField *celciusField;
+@property (weak, nonatomic) IBOutlet UITextField *kelvinField;
 
-- (IBAction)convertAction:(id)sender;
+- (IBAction)farenheitEditted:(id)sender;
+- (IBAction)celciusEditted:(id)sender;
+- (IBAction)kelvinEditted:(id)sender;
 
 @end
 
