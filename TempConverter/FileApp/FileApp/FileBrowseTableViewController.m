@@ -21,24 +21,19 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated ];
-    [self loadFileList];
+    
+    self.fileList = [[NSMutableArray alloc] init];
+    [self.fileList addObject:@"New File"];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    [self.fileList addObjectsFromArray:[filemgr contentsOfDirectoryAtPath:paths[0] error:nil]];
+    
     [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     filemgr = [NSFileManager defaultManager];
-    
-    [self loadFileList];
-}
-
-- (void)loadFileList
-{
-    self.fileList = [[NSMutableArray alloc] init];
-    [self.fileList addObject:@"New File"];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    [self.fileList addObjectsFromArray:[filemgr contentsOfDirectoryAtPath:paths[0] error:nil]];
 }
 
 - (void)didReceiveMemoryWarning {

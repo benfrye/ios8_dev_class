@@ -10,6 +10,4 @@
 
 @interface FileBrowseTableViewController : UITableViewController
 
-- (void)loadFileList;
-
 @end

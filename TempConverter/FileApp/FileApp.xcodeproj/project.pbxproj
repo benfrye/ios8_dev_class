@@ -15,6 +15,7 @@
 		175E0C091ADDB6EA00E64758 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175E0C071ADDB6EA00E64758 /* LaunchScreen.xib */; };
 		175E0C151ADDB6EA00E64758 /* FileAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0C141ADDB6EA00E64758 /* FileAppTests.m */; };
 		175E0C231ADDC84200E64758 /* FileBrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0C221ADDC84200E64758 /* FileBrowseTableViewController.m */; };
+		175E0C271ADEA7EF00E64758 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 175E0C261ADEA7EF00E64758 /* MyDocument.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +42,10 @@
 		175E0C0E1ADDB6EA00E64758 /* FileAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		175E0C131ADDB6EA00E64758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		175E0C141ADDB6EA00E64758 /* FileAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileAppTests.m; sourceTree = "<group>"; };
-		175E0C211ADDC84200E64758 /* FileBrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileBrowseTableViewController.h; sourceTree = "<group>"; };
 		175E0C221ADDC84200E64758 /* FileBrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileBrowseTableViewController.m; sourceTree = "<group>"; };
+		175E0C241ADEA4FC00E64758 /* FileBrowseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileBrowseTableViewController.h; sourceTree = "<group>"; };
+		175E0C251ADEA7EF00E64758 /* MyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDocument.h; sourceTree = "<group>"; };
+		175E0C261ADEA7EF00E64758 /* MyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDocument.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +95,10 @@
 				175E0C051ADDB6EA00E64758 /* Images.xcassets */,
 				175E0C071ADDB6EA00E64758 /* LaunchScreen.xib */,
 				175E0BF81ADDB6EA00E64758 /* Supporting Files */,
-				175E0C211ADDC84200E64758 /* FileBrowseTableViewController.h */,
 				175E0C221ADDC84200E64758 /* FileBrowseTableViewController.m */,
+				175E0C241ADEA4FC00E64758 /* FileBrowseTableViewController.h */,
+				175E0C251ADEA7EF00E64758 /* MyDocument.h */,
+				175E0C261ADEA7EF00E64758 /* MyDocument.m */,
 			);
 			path = FileApp;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				175E0C011ADDB6EA00E64758 /* ViewController.m in Sources */,
 				175E0BFE1ADDB6EA00E64758 /* AppDelegate.m in Sources */,
 				175E0BFB1ADDB6EA00E64758 /* main.m in Sources */,
+				175E0C271ADEA7EF00E64758 /* MyDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +430,7 @@
 				175E0C1A1ADDB6EA00E64758 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		175E0C1B1ADDB6EA00E64758 /* Build configuration list for PBXNativeTarget "FileAppTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +439,7 @@
 				175E0C1D1ADDB6EA00E64758 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

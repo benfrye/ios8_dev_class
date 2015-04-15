@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MyDocument.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -26,8 +27,6 @@
     filemgr = [NSFileManager defaultManager];
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    dataFileDir = dirPaths[0];
-    
     if ([self.filename isEqual:@""] || [self.filename isEqual:@"New File"])
     {
         self.filename = @"datafile.dat";
@@ -36,18 +35,32 @@
     {
         self.filenameTextField.text = self.filename;
     }
+    
+    dataFileDir = dirPaths[0];
     dataFilePath = [dataFileDir stringByAppendingPathComponent:self.filename];
+    NSURL *docURL = [NSURL fileURLWithPath:dataFilePath];
+    
+    _document = [[MyDocument alloc] initWithFileURL:docURL];
     
     if ([filemgr fileExistsAtPath:dataFilePath])
     {
-        NSData *buffer = [filemgr contentsAtPath:dataFilePath];
-        NSString *dataString = [[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding];
-        
-        self.textView.text = dataString;
-        [self deleteButton].enabled = YES;
+        [[self document] openWithCompletionHandler:^(BOOL success)
+         {
+             if (success) {
+                 NSLog(@"Opened");
+                 self.textView.text = self.document.userText;
+             }
+             else NSLog(@"Not Opened");
+         }];
+//        [self deleteButton].enabled = YES;
     }
     else
     {
+        [[self document] saveToURL:docURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success)
+         {
+             if (success) NSLog(@"Created");
+             else NSLog(@"Not Created");
+         }];
         self.textView.text = @"";
     }
 }
@@ -63,15 +76,26 @@
     [self deleteButton].enabled = NO;
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self saveAction:nil];
+}
+
 - (IBAction)saveAction:(id)sender {
-    NSData *buffer = [[[self textView] text] dataUsingEncoding:NSUTF8StringEncoding];
-    
-    if (![self.filenameTextField.text isEqual: @""]) {
-        dataFilePath = [dataFileDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.dat", self.filenameTextField.text]];
+    if (self.document.documentState == UIDocumentStateNormal) {
+        self.document.userText = self.textView.text;
+        dataFilePath = [dataFileDir stringByAppendingPathComponent:self.filenameTextField.text];
+        [[self document] saveToURL:[NSURL fileURLWithPath:dataFilePath] forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success)
+         {
+             if (success)
+             {
+                 NSLog(@"Saved");
+                 NSLog(@"Saved to: %@", dataFilePath);
+             }
+             else NSLog(@"Not Saved");
+         }];
+
     }
-    
-    [filemgr createFileAtPath:dataFilePath contents:buffer attributes:nil];
-    self.statusTextView.text = [NSString stringWithFormat:@"Saved to: %@", dataFilePath];
-    [self deleteButton].enabled = YES;
+//    [self deleteButton].enabled = YES;
 }
 @end

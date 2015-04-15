@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class MyDocument;
+
+@interface ViewController : UIViewController <UITextViewDelegate>
+
 @property (strong, nonatomic) NSString *filename;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UITextField *filenameTextField;
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
+
+@property MyDocument *document;
 
 @end
 
