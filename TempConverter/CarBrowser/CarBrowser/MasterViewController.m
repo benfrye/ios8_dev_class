@@ -53,7 +53,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *sectionTitle = [self.carSectionTitles objectAtIndex:indexPath.section];
         NSArray *sectionCars = [self.cars objectForKey:sectionTitle];
-        NSDate *object = [sectionCars objectAtIndex:indexPath.row];
+        Car *object = [sectionCars objectAtIndex:indexPath.row];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setDetailItem:object];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
