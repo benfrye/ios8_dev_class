@@ -52,7 +52,7 @@
              }
              else NSLog(@"Not Opened");
          }];
-//        [self deleteButton].enabled = YES;
+        [self deleteButton].enabled = YES;
     }
     else
     {
@@ -70,15 +70,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)deleteAction:(id)sender {
-    [filemgr removeItemAtPath:dataFilePath error:nil];
-    self.textView.text = @"";
-    [self deleteButton].enabled = NO;
-}
-
 - (void)textViewDidChange:(UITextView *)textView
 {
     [self saveAction:nil];
+}
+
+- (IBAction)deleteAction:(id)sender {
+    dataFilePath = [dataFileDir stringByAppendingPathComponent:self.filenameTextField.text];
+    [filemgr removeItemAtPath:dataFilePath error:nil];
+    self.textView.text = @"";
+    [self deleteButton].enabled = NO;
 }
 
 - (IBAction)saveAction:(id)sender {
@@ -91,11 +92,10 @@
              {
                  NSLog(@"Saved");
                  NSLog(@"Saved to: %@", dataFilePath);
+                 [self deleteButton].enabled = YES;
              }
              else NSLog(@"Not Saved");
          }];
-
     }
-//    [self deleteButton].enabled = YES;
 }
 @end

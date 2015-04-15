@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FileBrowseTableViewController : UITableViewController
+@interface FileBrowseTableViewController : UITableViewController <UITableViewDelegate>
 
 @end
