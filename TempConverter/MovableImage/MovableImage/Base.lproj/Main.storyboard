@@ -15,15 +15,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nwN-6U-4Ij">
                                 <rect key="frame" x="60" y="169" width="200" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="f52-8N-TUG" appends="YES" id="k1O-yp-QY5"/>
+                                </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LL5-qV-PfC">
+                                <rect key="frame" x="139" y="464" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="movableImage" destination="nwN-6U-4Ij" id="cQi-zN-XmX"/>
+                        <outlet property="pinchGesture" destination="f52-8N-TUG" id="4aW-C3-RZ6"/>
+                        <outlet property="scaleLabel" destination="LL5-qV-PfC" id="Aq8-zh-NPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="f52-8N-TUG">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Uly-Ly-NPu"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162.66666666666666" y="331.33333333333331"/>
         </scene>

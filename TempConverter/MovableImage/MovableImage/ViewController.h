@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController 
 
 @property (weak, nonatomic) IBOutlet UIImageView *movableImage;
+@property (strong, nonatomic) IBOutlet UIPinchGestureRecognizer *pinchGesture;
+@property (weak, nonatomic) IBOutlet UILabel *scaleLabel;
 
 @end
 
