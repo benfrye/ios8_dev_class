@@ -91,7 +91,7 @@
                                     <action selector="resetAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KGU-tP-ogK"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-oa-4lW">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="satellite" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qm0-oa-4lW">
                                 <rect key="frame" x="130" y="335" width="341" height="205"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="341" id="Bic-jC-e2F"/>

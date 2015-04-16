@@ -21,8 +21,8 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    //[self.locationManager startUpdatingLocation];
+    //[self.locationManager startMonitoringSignificantLocationChanges];
+    [self.locationManager startUpdatingLocation];
     
     self.startLocation = nil;
 }
