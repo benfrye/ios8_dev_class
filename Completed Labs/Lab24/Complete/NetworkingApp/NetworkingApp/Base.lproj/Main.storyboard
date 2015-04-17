@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEp-vx-lp7">
+                                <rect key="frame" x="16" y="45" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oet-nO-zzi">
+                                <rect key="frame" x="285" y="100" width="30" height="30"/>
+                                <state key="normal" title="GET">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWN-zq-Nit"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Response" translatesAutoresizingMaskIntoConstraints="NO" id="uQl-js-qvZ">
+                                <rect key="frame" x="16" y="169" width="568" height="411"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3C-zf-c2q">
+                                <rect key="frame" x="279" y="138" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mEp-vx-lp7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="2Xm-yv-U9T"/>
+                            <constraint firstAttribute="centerX" secondItem="oet-nO-zzi" secondAttribute="centerX" id="Hjr-UG-YZ2"/>
+                            <constraint firstItem="oet-nO-zzi" firstAttribute="top" secondItem="mEp-vx-lp7" secondAttribute="bottom" constant="25" id="IFh-hv-k81"/>
+                            <constraint firstItem="uQl-js-qvZ" firstAttribute="top" secondItem="J3C-zf-c2q" secondAttribute="bottom" constant="10" id="Tbg-5Q-bNK"/>
+                            <constraint firstItem="mEp-vx-lp7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hzm-4d-O3l"/>
+                            <constraint firstItem="mEp-vx-lp7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="k2k-pB-m4w"/>
+                            <constraint firstItem="uQl-js-qvZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="sXi-0g-Y2E"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uQl-js-qvZ" secondAttribute="bottom" constant="20" id="sb8-XV-cKH"/>
+                            <constraint firstAttribute="centerX" secondItem="J3C-zf-c2q" secondAttribute="centerX" id="teH-B1-gBm"/>
+                            <constraint firstItem="J3C-zf-c2q" firstAttribute="top" secondItem="oet-nO-zzi" secondAttribute="bottom" constant="8" id="yF5-7i-wZJ"/>
+                            <constraint firstItem="uQl-js-qvZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zVx-j3-WoK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="responseTextView" destination="uQl-js-qvZ" id="GWo-rW-ucO"/>
+                        <outlet property="statusLabel" destination="J3C-zf-c2q" id="036-2T-dcH"/>
+                        <outlet property="urlTextField" destination="mEp-vx-lp7" id="aBy-uh-edE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
