@@ -30,12 +30,12 @@
     //store the image data (NSData) to a file on a background thread
     
     //With NSOperation
-    __block UIImage *image = nil;
+    __block NSData *imageData = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.jpg"];
     
     NSBlockOperation* getImage = [NSBlockOperation blockOperationWithBlock:^{
-        NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+        imageData = [NSData dataWithContentsOfFile:filePath];
         NSError *downloadError = nil;
         
         if (imageData == nil) {
@@ -54,18 +54,17 @@
         }
 
         if (downloadError == nil && imageData != nil) {
-            image = [UIImage imageWithData:imageData];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                //update UI here
+                self.imageView.image = [UIImage imageWithData:imageData];
+                NSLog(@"Test");
+            });
         }
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-           //update UI here
-            self.imageView.image = image;
-        });
     }];
     
     NSBlockOperation* saveImage = [NSBlockOperation blockOperationWithBlock:^{
-        if (image != nil) {
-            [UIImageJPEGRepresentation(image, .0) writeToFile:filePath atomically:YES];
+        if (imageData != nil) {
+            [imageData writeToFile:filePath atomically:YES];
             //[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
             NSLog(@"Saved Image to %@", filePath);
         }
