@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0503C2A0-7206-43EB-9ADE-23AD749564C6</string>
+	<string>76A2EE36-0643-4014-A77B-0FFF1D19E81A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>PickerApp</string>
+	<string>NSNotificationLab</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3D65CBB43BF5209E434B917441650D6A77F39E12</key>
 		<string>github.com:benfrye/ios8_dev_class.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TempConverter/PickerApp/PickerApp.xcodeproj</string>
+	<string>TempConverter/NSNotificationLab/NSNotificationLab.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3D65CBB43BF5209E434B917441650D6A77F39E12</key>
