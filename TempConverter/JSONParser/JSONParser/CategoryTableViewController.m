@@ -142,11 +142,11 @@
     if ([temp length] > 13) {
         NSRange range = [[product objectForKey:@"ProductName"] rangeOfComposedCharacterSequencesForRange:(NSRange){0, 13}];
         temp = [[product objectForKey:@"ProductName"] substringWithRange:range];
-        temp = [temp stringByAppendingString:@" …"];
+        temp = [temp stringByAppendingString:@"…"];
     }
     cell.productNameLabel.text = temp;
-    cell.unitPriceLabel.text = [NSString stringWithFormat:@"$%@", [product objectForKey:@"UnitPrice"]];
-    cell.unitsInStockLabel.text = [NSString stringWithFormat:@"%@ in stock", [product objectForKey:@"UnitsInStock"]];
+    cell.unitPriceLabel.text = [NSString stringWithFormat:@"$%.2f", [[product objectForKey:@"UnitPrice"] floatValue]];
+    cell.unitsInStockLabel.text = [NSString stringWithFormat:@"%ld in stock", (long)[[product objectForKey:@"UnitsInStock"] integerValue]];
     return cell;
 }
 
