@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoryTableViewController : UITableViewController <NSURLConnectionDataDelegate>
+@interface CategoryTableViewController : UITableViewController <UITableViewDelegate, NSURLConnectionDataDelegate>
 
 @end

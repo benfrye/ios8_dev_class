@@ -35,31 +35,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ProductName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oar-ub-HoK">
-                                            <rect key="frame" x="84" y="11" width="106" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnitPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDs-tQ-p1u">
-                                            <rect key="frame" x="244" y="11" width="71" height="21"/>
+                                            <rect key="frame" x="21" y="11" width="106" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnitsInStock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S2-4e-ImZ">
-                                            <rect key="frame" x="500" y="11" width="99" height="21"/>
+                                            <rect key="frame" x="493" y="11" width="99" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnitPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDs-tQ-p1u">
+                                            <rect key="frame" x="400" y="11" width="71" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="4S2-4e-ImZ" firstAttribute="baseline" secondItem="HDs-tQ-p1u" secondAttribute="baseline" id="Csf-NT-Y6T"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="4S2-4e-ImZ" secondAttribute="trailing" constant="-7" id="FZK-oH-Zk7"/>
-                                        <constraint firstItem="oar-ub-HoK" firstAttribute="baseline" secondItem="HDs-tQ-p1u" secondAttribute="baseline" id="NqK-gj-kXf"/>
-                                        <constraint firstItem="oar-ub-HoK" firstAttribute="leading" secondItem="sp4-uG-Otd" secondAttribute="leadingMargin" constant="76" id="Q1w-HN-vH1"/>
-                                        <constraint firstItem="HDs-tQ-p1u" firstAttribute="leading" secondItem="oar-ub-HoK" secondAttribute="trailing" constant="54" id="Yf2-PF-tX6"/>
-                                        <constraint firstItem="oar-ub-HoK" firstAttribute="centerY" secondItem="sp4-uG-Otd" secondAttribute="centerY" id="kag-DY-zCU"/>
+                                        <constraint firstItem="4S2-4e-ImZ" firstAttribute="trailing" secondItem="sp4-uG-Otd" secondAttribute="trailingMargin" id="1VF-eZ-5dJ"/>
+                                        <constraint firstItem="HDs-tQ-p1u" firstAttribute="baseline" secondItem="oar-ub-HoK" secondAttribute="baseline" id="3ee-L3-B2E"/>
+                                        <constraint firstItem="oar-ub-HoK" firstAttribute="leading" secondItem="sp4-uG-Otd" secondAttribute="leadingMargin" constant="13" id="3hY-vI-o6x"/>
+                                        <constraint firstItem="4S2-4e-ImZ" firstAttribute="baseline" secondItem="HDs-tQ-p1u" secondAttribute="baseline" id="a2P-lE-qlv"/>
+                                        <constraint firstItem="oar-ub-HoK" firstAttribute="centerY" secondItem="sp4-uG-Otd" secondAttribute="centerY" id="pLe-ID-13J"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HDs-tQ-p1u" secondAttribute="trailing" constant="121" id="woo-DB-oDa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

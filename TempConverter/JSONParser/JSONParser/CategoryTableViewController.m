@@ -1,4 +1,4 @@
-//
+ //
 //  CategoryTableViewController.m
 //  JSONParser
 //
@@ -48,14 +48,15 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    NSError *error;
     if ([connection.originalRequest.URL.absoluteString isEqualToString:_apiURL]) {
-        NSError *error;
         id jsonObject = [NSJSONSerialization JSONObjectWithData:[_responses objectForKey:_apiURL] options:NSJSONReadingAllowFragments error:&error];
         if ([jsonObject isKindOfClass:[NSArray class]]) {
             for (int ii = 0; ii < [jsonObject count]; ii++) {
                 ProductCategory *newCategory = [[ProductCategory alloc] init];
                 newCategory.categoryID = [NSString stringWithFormat:@"%@", [[jsonObject objectAtIndex:ii] objectForKey:@"CategoryID"]];
                 newCategory.categoryName = [NSString stringWithFormat:@"%@", [[jsonObject objectAtIndex:ii] objectForKey:@"CategoryName"]];
+                newCategory.products = [[NSMutableArray alloc] initWithCapacity:5];
                 [_categories addObject:newCategory];
             }
         }
@@ -64,7 +65,24 @@
             NSLog(@"Response not in expected format.");
         }
     }
-    
+    else
+    {
+        //NSLog(@"Received Response from %@", connection.originalRequest.URL.absoluteString);
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:[_responses objectForKey:connection.originalRequest.URL.absoluteString] options:NSJSONReadingAllowFragments error:&error];
+        NSRange idRange = NSMakeRange([_apiURL length] + 1, //include slash
+                                          [connection.originalRequest.URL.absoluteString length] - ([_apiURL length] + 1));
+        NSString *categoryID = [connection.originalRequest.URL.absoluteString substringWithRange:idRange];
+        if ([jsonObject isKindOfClass:[NSArray class]]) {
+            for (int ii = 0; ii < [_categories count]; ii++) {
+                if ([[[_categories objectAtIndex:ii] categoryID] isEqualToString:categoryID]) {
+                    [[[_categories objectAtIndex:ii] products] removeAllObjects];
+                    [[[_categories objectAtIndex:ii] products] addObjectsFromArray:jsonObject];
+                    break;
+                }
+            }
+        }
+    }
+
     [self.tableView reloadData];
 }
 
@@ -88,10 +106,10 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *categoryID = [[_categories objectAtIndex:indexPath.section] objectForKey:@"CategoryID"];
+    NSString *categoryID = [[_categories objectAtIndex:indexPath.section] categoryID];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", _apiURL, categoryID]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
     
     _connection = [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -100,8 +118,7 @@
     // Return the number of rows in the section.
     NSIndexPath *selectedIP = [self.tableView indexPathForSelectedRow];
     if (selectedIP != nil && section == [selectedIP section]) {
-        NSLog(@"Section selected %ld", (long)section);
-        return [[[_categories objectAtIndex:section] products] count];;
+        return [[[_categories objectAtIndex:section] products] count];
     }
     else
     {
@@ -117,10 +134,19 @@
         return cell;
     }
     
-    
-    
     DescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
-    //cell.productNameLabel.text =
+    NSDictionary *product = [[[_categories objectAtIndex:indexPath.section] products] objectAtIndex:indexPath.row - 1];
+    
+    NSString *temp = [product objectForKey:@"ProductName"];
+    
+    if ([temp length] > 13) {
+        NSRange range = [[product objectForKey:@"ProductName"] rangeOfComposedCharacterSequencesForRange:(NSRange){0, 13}];
+        temp = [[product objectForKey:@"ProductName"] substringWithRange:range];
+        temp = [temp stringByAppendingString:@" …"];
+    }
+    cell.productNameLabel.text = temp;
+    cell.unitPriceLabel.text = [NSString stringWithFormat:@"$%@", [product objectForKey:@"UnitPrice"]];
+    cell.unitsInStockLabel.text = [NSString stringWithFormat:@"%@ in stock", [product objectForKey:@"UnitsInStock"]];
     return cell;
 }
 
