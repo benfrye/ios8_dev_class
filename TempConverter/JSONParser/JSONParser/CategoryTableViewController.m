@@ -64,6 +64,7 @@
         {
             NSLog(@"Response not in expected format.");
         }
+        [self.tableView reloadData];
     }
     else
     {
@@ -81,9 +82,11 @@
                 }
             }
         }
+        NSRange range = NSMakeRange(0 , [_categories count]);
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:range] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 
-    [self.tableView reloadData];
+    
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
