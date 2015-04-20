@@ -20,6 +20,7 @@
     NSURLConnection *_connection;
     NSMutableDictionary *_responses;
     NSString *_apiURL;
+    NSIndexPath *_previouslySelectedRow;
 }
 
 - (void)viewDidLoad {
@@ -78,15 +79,18 @@
                 if ([[[_categories objectAtIndex:ii] categoryID] isEqualToString:categoryID]) {
                     [[[_categories objectAtIndex:ii] products] removeAllObjects];
                     [[[_categories objectAtIndex:ii] products] addObjectsFromArray:jsonObject];
-                    break;
+                    
+                    NSRange range = NSMakeRange(0 , [_categories count]);
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:range] withRowAnimation:UITableViewRowAnimationTop];
+//                    [self.tableView beginUpdates];
+//                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:ii] withRowAnimation:UITableViewRowAnimationTop];
+//                    [self.tableView endUpdates];
+                    
+                    return;
                 }
             }
         }
-        NSRange range = NSMakeRange(0 , [_categories count]);
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:range] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-
-    
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -109,10 +113,32 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Do nothing if we've selected a product
+    if (indexPath.row > 0) {
+        return;
+    }
+    
+    if ([indexPath compare:_previouslySelectedRow] == NSOrderedSame) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        _previouslySelectedRow = nil;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
+
+    if (_previouslySelectedRow != nil) {
+        [self.tableView deselectRowAtIndexPath:_previouslySelectedRow animated:YES];
+        //[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:_previouslySelectedRow.section] withRowAnimation:UITableViewRowAnimationTop];
+    }
+    
+    _previouslySelectedRow = indexPath;
+    
     NSString *categoryID = [[_categories objectAtIndex:indexPath.section] categoryID];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", _apiURL, categoryID]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:5];
+    
+    //empty out any cached data
+    [_responses setObject:[NSMutableData dataWithCapacity:32] forKey:[url absoluteString]];
     
     _connection = [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -131,6 +157,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         cell.textLabel.text = [[_categories objectAtIndex:indexPath.section] categoryName];
